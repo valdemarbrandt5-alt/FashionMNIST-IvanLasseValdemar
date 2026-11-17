@@ -202,3 +202,22 @@ plt.show()
 
 torch.save(model.state_dict(), "model.pth")
 print("Saved PyTorch Model State to model.pth")
+
+print("\n=== RESULTS FOR OVERLEAF ===")
+
+for i in range(len(history["train_acc"])):
+    print(
+        f"Epoch {i+1}: "
+        f"Train accuracy={history['train_acc'][i]*100:.2f}, "
+        f"Train loss={history['train_loss'][i]:.4f}"
+    )
+
+eval_acc = history.get("val_acc", history.get("test_acc"))
+eval_loss = history.get("val_loss", history.get("test_loss"))
+
+for i in range(len(eval_acc)):
+    print(
+        f"Epoch {i+1}: "
+        f"Evaluation accuracy={eval_acc[i]*100:.2f}, "
+        f"Evaluation loss={eval_loss[i]:.4f}"
+    )
